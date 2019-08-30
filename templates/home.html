@@ -4,11 +4,11 @@
         <hr style="width: 100%">
         <div class="uploadFile">
             <div class="boxUploadFile">
-                <label class="importUsLabel mb-0" id="importUsLabel">您尚未上传任何文件</label>
+                <label class="importUsLabel mb-0" id="importUsLabel">点击上传文件</label>
                 <input type="file" class="custom-file-input inputUploadFile" id="importUs" import-sheet-js="" multiple="false">
             </div>
             <div class="UploapFileBox">
-                <button class="btn btnUploadFile">
+                <button class="btn btnUploadFile" ng-click="upload()">
                     <i class="icon-Group-1610"></i>
                     <label class="mb-0 cursor-pointer">财产查找</label>
                 </button>
@@ -31,7 +31,7 @@
         <hr style="width: 100%">
         <div class="filterBoxTag">
             <label class="mb-0">客户类型</label>
-            <label ng-cloak class="mb-0 ml-5 cursor-pointer" ng-class="{'typeFilter': filters.type == ''}" ng-click="changeFilterType('')">不是</label>
+            <label ng-cloak class="mb-0 ml-5 cursor-pointer" ng-class="{'typeFilter': filters.type == ''}" ng-click="changeFilterType('')">不限</label>
             <label ng-cloak class="mb-0 ml-5 cursor-pointer" ng-class="{'typeFilter': filters.type == '个人'}" ng-click="changeFilterType('个人')">个人</label>
             <label ng-cloak class="mb-0 ml-5 cursor-pointer" ng-class="{'typeFilter': filters.type == '企业'}" ng-click="changeFilterType('企业')">企业</label>
         </div>
