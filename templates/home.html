@@ -9,19 +9,24 @@
             </div>
             <div class="UploapFileBox">
                 <button class="btn btnUploadFile">
+                    <i class="icon-Group-1610"></i>
                     <label class="mb-0 cursor-pointer">财产查找</label>
                 </button>
                 <button class="btn btnUploadFile">
+                    <i class="icon-Group-1612"></i>
                     <label class="mb-0 cursor-pointer">财产监控</label>
                 </button>
             </div>
         </div>
     </div>
     <div class="filterBox">
-        <div>
+        <div class="displayFlexRow">
             <input type="text" class="form-control inputFilterText" ng-model="filters.text">
-            <label class="icon-find iconSearchFilterInput"></label>
+            <label class="icon-Group-1607 iconSearchFilterInput"></label>
             <label class="icon-close iconClearFilterInput" ng-click="clearFilterText()"></label>
+            <button class="btn btnSaveInformation">
+                <label class="mb-0 cursor-pointer" ng-click="search()">搜索</label>
+            </button>
         </div>
         <hr style="width: 100%">
         <div class="filterBoxTag">
@@ -49,7 +54,7 @@
                 代位权
             </div>
         </div>
-        <hr style="width: 100%; margin-top: 1px;">
+        <hr style="width: 100%; margin-top: 0px;">
         <div class="tableBox">
             <div class="displayFlexColumn" ng-show="tabActive == '1'">
                 <div class="headerRow">
@@ -65,7 +70,7 @@
                     <div class="headerCellIDNumber">
                         企业名称
                     </div>
-                    <div class="headerCellIDNumber">
+                    <div class="headerCellDate">
                         案号
                     </div>
                     <div class="headerCellDate">
@@ -78,7 +83,7 @@
                         查询时间
                     </div>
                 </div>
-                <div ng-repeat="q in querys">
+                <div ng-repeat="q in querys | filter: filters.text | filter: filters.type">
                     <div class="rowBox">
                         <div class="headerCellCustomerType">
                             {{q.customer_type}}
@@ -92,7 +97,7 @@
                         <div class="headerCellIDNumber">
                             {{q.company_name}}
                         </div>
-                        <div class="headerCellIDNumber">
+                        <div class="headerCellDate">
                             {{q.case_number}}
                         </div>
                         <div class="headerCellDate">
@@ -142,7 +147,7 @@
                     <div class="headerCellSourceLink">
                         拍卖源链接
                     </div>
-                    <div class="headerCell">
+                    <div class="headerCellDate">
                         处置法院
                     </div>
                     <div class="headerCell">
@@ -164,7 +169,7 @@
                         审核备注
                     </div>
                 </div>
-                <div ng-repeat="a in auctions">
+                <div ng-repeat="a in auctions | filter: filters.text | filter: filters.type">
                     <div class="rowBox">
                         <div class="headerCellCustomerType">
                             {{a.customer_type}}
@@ -199,7 +204,7 @@
                         <div class="headerCellSourceLink">
                             {{a.auction_source_link}}
                         </div>
-                        <div class="headerCell">
+                        <div class="headerCellDate">
                             {{a.disposal_court}}
                         </div>
                         <div class="headerCell">
@@ -258,16 +263,16 @@
                     <div class="headerCellDate">
                         开庭日期
                     </div>
-                    <div class="headerCell">
+                    <div class="headerCellAuctionTitle">
                         原告
                     </div>
-                    <div class="headerCell">
+                    <div class="headerCellAuctionTitle">
                         被告
                     </div>
                     <div class="headerCell">
                         起诉法院
                     </div>
-                    <div class="headerCellIDNumber">
+                    <div class="headerCellDate">
                         案号
                     </div>
                     <div class="headerCell">
@@ -275,7 +280,7 @@
                     </div>
                 </div>
                 <div class="displayFlexColumn">
-                    <div ng-repeat="s in surveillance">
+                    <div ng-repeat="s in surveillance | filter: filters.text | filter: filters.type">
                         <div class="rowBox">
                             <div class="headerCellCustomerType">
                                 {{s.customer_type}}
@@ -310,16 +315,16 @@
                             <div class="headerCellDate">
                                 {{s.court_date}}
                             </div>
-                            <div class="headerCell">
+                            <div class="headerCellAuctionTitle">
                                 {{s.plaintiff}}
                             </div>
-                            <div class="headerCell">
+                            <div class="headerCellAuctionTitle">
                                 {{s.defendant}}
                             </div>
                             <div class="headerCell">
                                 {{s.prosecution_court}}
                             </div>
-                            <div class="headerCellIDNumber">
+                            <div class="headerCellDate">
                                 {{s.case_number}}
                             </div>
                             <div class="headerCell">
@@ -349,13 +354,13 @@
                     <div class="headerCell">
                         失信人姓名
                     </div>
-                    <div class="headerCell">
+                    <div class="headerCellIDNumber">
                         失信人身份证号
                     </div>
-                    <div class="headerCell">
+                    <div class="headerCellDate">
                         机构名称
                     </div>
-                    <div class="headerCellIDNumber">
+                    <div class="headerCellDate">
                         案号
                     </div>
                     <div class="headerCell">
@@ -364,20 +369,20 @@
                     <div class="headerCellDate">
                         发布日期
                     </div>
-                    <div class="headerCell">
+                    <div class="headerCellIDNumber">
                         被执行人履历状态
                     </div>
-                    <div class="headerCell">
+                    <div class="headerCellAuctionTitle">
                         被执行人行为具体情形
                     </div>
-                    <div class="headerCell">
+                    <div class="headerCellAuctionTitle">
                         法定代表人|负责人姓名
                     </div>
-                    <div class="headerCell">
+                    <div class="headerCellAuctionTitle">
                         生效法律文书确定的义务
                     </div>
                 </div>
-                <div ng-repeat="t in trust">
+                <div ng-repeat="t in trust | filter: filters.text | filter: filters.type">
                     <div class="rowBox">
                         <div class="headerCellCustomerType">
                             {{t.customer_type}}
@@ -397,19 +402,13 @@
                         <div class="headerCell">
                             {{t.untrusted_person_name}}
                         </div>
-                        <div class="headerCell">
+                        <div class="headerCellIDNumber">
                             {{t.untrusted_person_id_number}}
                         </div>
-                        <div class="headerCell">
-                            {{t.debtor_id_number}}
-                        </div>
-                        <div class="headerCell">
+                        <div class="headerCellDate">
                             {{t.institution_name}}
                         </div>
                         <div class="headerCellDate">
-                            {{t.date_filing}}
-                        </div>
-                        <div class="headerCellIDNumber">
                             {{t.case_number}}
                         </div>
                         <div class="headerCell">
@@ -418,16 +417,16 @@
                         <div class="headerCellDate">
                             {{t.release_date}}
                         </div>
-                        <div class="headerCell">
+                        <div class="headerCellIDNumber">
                             {{t.executed_person_status}}
                         </div>
-                        <div class="headerCell">
+                        <div class="headerCellAuctionTitle">
                             {{t.execution_person_behavior}}
                         </div>
-                        <div class="headerCell">
+                        <div class="headerCellAuctionTitle">
                             {{t.legal_representative}}
                         </div>
-                        <div class="headerCell">
+                        <div class="headerCellAuctionTitle">
                             {{t.obligation_established}}
                         </div>
                     </div>
@@ -468,23 +467,23 @@
                     <div class="headerCellDate">
                         开庭日期
                     </div>
-                    <div class="headerCell">
+                    <div class="headerCellAuctionTitle">
                         原告
                     </div>
-                    <div class="headerCell">
+                    <div class="headerCellAuctionTitle">
                         被告
                     </div>
                     <div class="headerCell">
                         起诉法院
                     </div>
-                    <div class="headerCellIDNumber">
+                    <div class="headerCellDate">
                         案号
                     </div>
                     <div class="headerCell">
                         案件详情链接
                     </div>
                 </div>
-                <div ng-repeat="s in succesion">
+                <div ng-repeat="s in succesion | filter: filters.text | filter: filters.type">
                     <div class="rowBox">
                         <div class="headerCellCustomerType">
                             {{s.customer_type}}
@@ -519,16 +518,16 @@
                         <div class="headerCellDate">
                             {{s.court_date}}
                         </div>
-                        <div class="headerCell">
+                        <div class="headerCellAuctionTitle">
                             {{s.plaintiff}}
                         </div>
-                        <div class="headerCell">
+                        <div class="headerCellAuctionTitle">
                             {{s.defendant}}
                         </div>
                         <div class="headerCell">
                             {{s.prosecution_court}}
                         </div>
-                        <div class="headerCellIDNumber">
+                        <div class="headerCellDate">
                             {{s.case_number}}
                         </div>
                         <div class="headerCell">
@@ -539,7 +538,4 @@
             </div>
         </div>
     </div>
-    <!-- <div class="emptyData" ng-show="worksheet.length == 0 || !worksheet">
-
-    </div> -->
 </div>
