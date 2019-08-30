@@ -31,32 +31,32 @@
         <hr style="width: 100%">
         <div class="filterBoxTag">
             <label class="mb-0">客户类型</label>
-            <label class="mb-0 ml-5 cursor-pointer" ng-class="{'typeFilter': filters.type == ''}" ng-click="changeFilterType('')">不是</label>
-            <label class="mb-0 ml-5 cursor-pointer" ng-class="{'typeFilter': filters.type == '个人'}" ng-click="changeFilterType('个人')">个人</label>
-            <label class="mb-0 ml-5 cursor-pointer" ng-class="{'typeFilter': filters.type == '企业'}" ng-click="changeFilterType('企业')">企业</label>
+            <label ng-cloak class="mb-0 ml-5 cursor-pointer" ng-class="{'typeFilter': filters.type == ''}" ng-click="changeFilterType('')">不是</label>
+            <label ng-cloak class="mb-0 ml-5 cursor-pointer" ng-class="{'typeFilter': filters.type == '个人'}" ng-click="changeFilterType('个人')">个人</label>
+            <label ng-cloak class="mb-0 ml-5 cursor-pointer" ng-class="{'typeFilter': filters.type == '企业'}" ng-click="changeFilterType('企业')">企业</label>
         </div>
     </div>
     <div class="fileData">
         <div class="tableHeader">
-            <div class="sheetTab" ng-click="changeActiveTab(1)" ng-class="{'sheetTabActive': tabActive == '1'}">
+            <div ng-cloak class="sheetTab" ng-click="changeActiveTab(1)" ng-class="{'sheetTabActive': tabActive == '1'}">
                 查询状态
             </div>
-            <div class="sheetTab" ng-click="changeActiveTab(2)" ng-class="{'sheetTabActive': tabActive == '2'}">
+            <div ng-cloak class="sheetTab" ng-click="changeActiveTab(2)" ng-class="{'sheetTabActive': tabActive == '2'}">
                 资产拍卖
             </div>
-            <div class="sheetTab" ng-click="changeActiveTab(3)" ng-class="{'sheetTabActive': tabActive == '3'}">
+            <div ng-cloak class="sheetTab" ng-click="changeActiveTab(3)" ng-class="{'sheetTabActive': tabActive == '3'}">
                 涉诉监控
             </div>
-            <div class="sheetTab" ng-click="changeActiveTab(4)" ng-class="{'sheetTabActive': tabActive == '4'}">
+            <div ng-cloak class="sheetTab" ng-click="changeActiveTab(4)" ng-class="{'sheetTabActive': tabActive == '4'}">
                 失信记录
             </div>
-            <div class="sheetTab" ng-click="changeActiveTab(5)" ng-class="{'sheetTabActive': tabActive == '5'}">
+            <div ng-cloak class="sheetTab" ng-click="changeActiveTab(5)" ng-class="{'sheetTabActive': tabActive == '5'}">
                 代位权
             </div>
         </div>
         <hr style="width: 100%; margin-top: 0px;">
         <div class="tableBox">
-            <div class="displayFlexColumn" ng-show="tabActive == '1'">
+            <div ng-cloak class="displayFlexColumn" ng-show="tabActive == '1'">
                 <div class="headerRow">
                     <div class="headerCellCustomerType">
                         客户类型
@@ -112,7 +112,7 @@
                     </div>
                 </div>
             </div>
-            <div class="displayFlexColumn" ng-show="tabActive == '2'">
+            <div ng-cloak class="displayFlexColumn" ng-show="tabActive == '2'">
                 <div class="headerRow">
                     <div class="headerCellCustomerType">
                         客户类型
@@ -228,7 +228,7 @@
                     </div>
                 </div>
             </div>
-            <div class="displayFlexColumn" ng-show="tabActive == '3'">
+            <div ng-cloak class="displayFlexColumn" ng-show="tabActive == '3'">
                 <div class="headerRow">
                     <div class="headerCellCustomerType">
                         客户类型
@@ -334,7 +334,7 @@
                     </div>
                 </div>
             </div>
-            <div class="displayFlexColumn" ng-show="tabActive == '4'">
+            <div ng-cloak class="displayFlexColumn" ng-show="tabActive == '4'">
                 <div class="headerRow">
                     <div class="headerCellCustomerType">
                         客户类型
@@ -432,7 +432,7 @@
                     </div>
                 </div>
             </div>
-            <div class="displayFlexColumn" ng-show="tabActive == '5'">
+            <div ng-cloak class="displayFlexColumn" ng-show="tabActive == '5'">
                 <div class="headerRow">
                     <div class="headerCellCustomerType">
                         客户类型
