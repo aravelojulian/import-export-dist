@@ -3,17 +3,16 @@
         <label>上传文件</label>
         <hr style="width: 100%">
         <div class="uploadFile">
-            <label class="importUsLabel" id="importUsLabel">您尚未上传任何文件</label>
+            <div class="boxUploadFile">
+                <label class="importUsLabel mb-0" id="importUsLabel">您尚未上传任何文件</label>
+                <input type="file" class="custom-file-input inputUploadFile" id="importUs" import-sheet-js="" multiple="false">
+            </div>
             <div class="UploapFileBox">
-                <div class="boxUploadFile">
-                    <button class="btn btnUploadFile">
-                        <label class="mb-0 cursor-pointer">上传文件</label>
-                        <i class="icon-upload"></i>
-                    </button>
-                    <input type="file" class="custom-file-input inputUploadFile" id="importUs" import-sheet-js="" multiple="false">
-                </div>
-                <button class="btn btnSaveInformation" ng-click="save()">
-                    <label class="mb-0 cursor-pointer">保存信息</label>
+                <button class="btn btnUploadFile">
+                    <label class="mb-0 cursor-pointer">财产查找</label>
+                </button>
+                <button class="btn btnUploadFile">
+                    <label class="mb-0 cursor-pointer">财产监控</label>
                 </button>
             </div>
         </div>
@@ -32,22 +31,453 @@
             <label class="mb-0 ml-5 cursor-pointer" ng-class="{'typeFilter': filters.type == '企业'}" ng-click="changeFilterType('企业')">企业</label>
         </div>
     </div>
-    <div class="fileData" ng-show="worksheet.length > 0">
+    <div class="fileData">
         <div class="tableHeader">
-            <div class="sheetTab" ng-click="changeActiveTab($index)" ng-class="{'sheetTabActive': tabActive == $index}" ng-repeat="sheet in sheetsNames">
-                {{sheet}}
+            <div class="sheetTab" ng-click="changeActiveTab(1)" ng-class="{'sheetTabActive': tabActive == '1'}">
+                查询状态
+            </div>
+            <div class="sheetTab" ng-click="changeActiveTab(2)" ng-class="{'sheetTabActive': tabActive == '2'}">
+                资产拍卖
+            </div>
+            <div class="sheetTab" ng-click="changeActiveTab(3)" ng-class="{'sheetTabActive': tabActive == '3'}">
+                涉诉监控
+            </div>
+            <div class="sheetTab" ng-click="changeActiveTab(4)" ng-class="{'sheetTabActive': tabActive == '4'}">
+                失信记录
+            </div>
+            <div class="sheetTab" ng-click="changeActiveTab(5)" ng-class="{'sheetTabActive': tabActive == '5'}">
+                代位权
             </div>
         </div>
         <hr style="width: 100%; margin-top: 1px;">
-        <div class="tableBox" ng-show="tabActive == $index" ng-repeat="w in worksheet">
-            <div class="rowBox" ng-repeat="r in w.array | filter:filters.text | filter:filters.type" ng-class="{'headerRow': $index == 0}">
-                <div class="headerCell" ng-repeat="h in r.array track by $index " ng-class="{'headerRow': $parent.$index == 0}">
-                    <label class="mb-0" ng-class="{'queryStatus': $parent.$parent.$index == 0 && $parent.$index != 0 && $index == 5}">{{h}}</label>
+        <div class="headerRow" ng-show="tabActive == '1'">
+            <div class="headerCellCustomerType">
+                客户类型
+            </div>
+            <div class="headerCellCustomerType">
+                姓名
+            </div>
+            <div class="headerCellIDNumber">
+                证件号码
+            </div>
+            <div class="headerCellIDNumber">
+                企业名称
+            </div>
+            <div class="headerCellIDNumber">
+                案号
+            </div>
+            <div class="headerCellDate">
+                查询状态
+            </div>
+            <div class="headerCellDate">
+                查询结果
+            </div>
+            <div class="headerCellDate">
+                查询时间
+            </div>
+        </div>
+        <div class="headerRow" ng-show="tabActive == '2'">
+            <div class="headerCellCustomerType">
+                客户类型
+            </div>
+            <div class="headerAgency">
+                归属机构
+            </div>
+            <div class="headerCellCustomerType">
+                姓名
+            </div>
+            <div class="headerCellIDNumber">
+                证件号码
+            </div>
+            <div class="headerCellIDNumber">
+                企业名称
+            </div>
+            <div class="headerCellIDNumber">
+                唯一ID
+            </div>
+            <div class="headerCell">
+                债务人名称
+            </div>
+            <div class="headerCell">
+                债务人证件号
+            </div>
+            <div class="headerCellDate">
+                更新时间
+            </div>
+            <div class="headerCell">
+                拍卖标题
+            </div>
+            <div class="headerCell">
+                拍卖源链接
+            </div>
+            <div class="headerCell">
+                处置法院
+            </div>
+            <div class="headerCell">
+                拍卖状态
+            </div>
+            <div class="headerCell">
+                开拍时间
+            </div>
+            <div class="headerCell">
+                当前价
+            </div>
+            <div class="headerCell">
+                评估价
+            </div>
+            <div class="headerCell">
+                成交价
+            </div>
+            <div class="headerCell">
+                审核备注
+            </div>
+        </div>
+        <div class="headerRow" ng-show="tabActive == '3' || tabActive == '5' ">
+            <div class="headerCellCustomerType">
+                客户类型
+            </div>
+            <div class="headerAgency">
+                归属机构
+            </div>
+            <div class="headerCellCustomerType">
+                姓名
+            </div>
+            <div class="headerCellIDNumber">
+                证件号码
+            </div>
+            <div class="headerCellIDNumber">
+                企业名称
+            </div>
+            <div class="headerCellIDNumber">
+                唯一ID
+            </div>
+            <div class="headerCell">
+                债务人名称
+            </div>
+            <div class="headerCell">
+                债务人证件号
+            </div>
+            <div class="headerCellDate">
+                更新时间
+            </div>
+            <div class="headerCellDate">
+                立案日期
+            </div>
+            <div class="headerCellDate">
+                开庭日期
+            </div>
+            <div class="headerCell">
+                原告
+            </div>
+            <div class="headerCell">
+                被告
+            </div>
+            <div class="headerCell">
+                起诉法院
+            </div>
+            <div class="headerCellIDNumber">
+                案号
+            </div>
+            <div class="headerCell">
+                案件详情链接
+            </div>
+        </div>
+        <div class="headerRow" ng-show="tabActive == '4'">
+            <div class="headerCellCustomerType">
+                客户类型
+            </div>
+            <div class="headerAgency">
+                归属机构
+            </div>
+            <div class="headerCellCustomerType">
+                姓名
+            </div>
+            <div class="headerCellIDNumber">
+                证件号码
+            </div>
+            <div class="headerCellIDNumber">
+                企业名称
+            </div>
+            <div class="headerCell">
+                失信人姓名
+            </div>
+            <div class="headerCell">
+                失信人身份证号
+            </div>
+            <div class="headerCell">
+                机构名称
+            </div>
+            <div class="headerCellIDNumber">
+                案号
+            </div>
+            <div class="headerCell">
+                省份
+            </div>
+            <div class="headerCellDate">
+                发布日期
+            </div>
+            <div class="headerCell">
+                被执行人履历状态
+            </div>
+            <div class="headerCell">
+                被执行人行为具体情形
+            </div>
+            <div class="headerCell">
+                法定代表人|负责人姓名
+            </div>
+            <div class="headerCell">
+                生效法律文书确定的义务
+            </div>
+        </div>
+        <div class="tableBox">
+            <div ng-repeat="q in querys" ng-show="tabActive == '1'">
+                <div class="rowBox">
+                    <div class="headerCellCustomerType">
+                        {{q.customer_type}}
+                    </div>
+                    <div class="headerCellCustomerType">
+                        {{q.name}}
+                    </div>
+                    <div class="headerCellIDNumber">
+                        {{q.id_number}}
+                    </div>
+                    <div class="headerCellIDNumber">
+                        {{q.company_name}}
+                    </div>
+                    <div class="headerCellIDNumber">
+                        {{q.case_number}}
+                    </div>
+                    <div class="headerCellDate">
+                        {{q.query_status}}
+                    </div>
+                    <div class="headerCellDate">
+                        {{q.search_result}}
+                    </div>
+                    <div class="headerCellDate">
+                        {{q.query_time}}
+                    </div>
+                </div>
+            </div>
+            <div ng-repeat="a in auctions" ng-show="tabActive == '2'">
+                <div class="rowBox">
+                    <div class="headerCellCustomerType">
+                        {{a.customer_type}}
+                    </div>
+                    <div class="headerAgency">
+                        {{a.ownership_agency}}
+                    </div>
+                    <div class="headerCellCustomerType">
+                        {{a.name}}
+                    </div>
+                    <div class="headerCellIDNumber">
+                        {{a.id_number}}
+                    </div>
+                    <div class="headerCellIDNumber">
+                        {{a.company_name}}
+                    </div>
+                    <div class="headerCellIDNumber">
+                        {{a.unique_id}}
+                    </div>
+                    <div class="headerCell">
+                        {{a.debtor_name}}
+                    </div>
+                    <div class="headerCell">
+                        {{a.debtor_id_number}}
+                    </div>
+                    <div class="headerCellDate">
+                        {{a.update_time}}
+                    </div>
+                    <div class="headerCell">
+                        {{a.auction_title}}
+                    </div>
+                    <div class="headerCell">
+                        {{a.auction_source_link}}
+                    </div>
+                    <div class="headerCell">
+                        {{a.disposal_court}}
+                    </div>
+                    <div class="headerCell">
+                        {{a.auction_status}}
+                    </div>
+                    <div class="headerCell">
+                        {{a.start_time}}
+                    </div>
+                    <div class="headerCell">
+                        {{a.current_price}}
+                    </div>
+                    <div class="headerCell">
+                        {{a.evaluation_price}}
+                    </div>
+                    <div class="headerCell">
+                        {{a.final_price}}
+                    </div>
+                    <div class="headerCell">
+                        {{a.audit_note}}
+                    </div>
+                </div>
+            </div>
+            <div ng-repeat="s in surveillance" ng-show="tabActive == '3'">
+                <div class="rowBox">
+                    <div class="headerCellCustomerType">
+                        {{s.customer_type}}
+                    </div>
+                    <div class="headerAgency">
+                        {{s.ownership_agency}}
+                    </div>
+                    <div class="headerCellCustomerType">
+                        {{s.name}}
+                    </div>
+                    <div class="headerCellIDNumber">
+                        {{s.id_number}}
+                    </div>
+                    <div class="headerCellIDNumber">
+                        {{s.company_name}}
+                    </div>
+                    <div class="headerCellIDNumber">
+                        {{s.unique_id}}
+                    </div>
+                    <div class="headerCell">
+                        {{s.debtor_name}}
+                    </div>
+                    <div class="headerCell">
+                        {{s.debtor_id_number}}
+                    </div>
+                    <div class="headerCellDate">
+                        {{s.update_time}}
+                    </div>
+                    <div class="headerCellDate">
+                        {{s.date_filing}}
+                    </div>
+                    <div class="headerCellDate">
+                        {{s.court_date}}
+                    </div>
+                    <div class="headerCell">
+                        {{s.plaintiff}}
+                    </div>
+                    <div class="headerCell">
+                        {{s.defendant}}
+                    </div>
+                    <div class="headerCell">
+                        {{s.prosecution_court}}
+                    </div>
+                    <div class="headerCellIDNumber">
+                        {{s.case_number}}
+                    </div>
+                    <div class="headerCell">
+                        {{s.case_details_link}}
+                    </div>
+                </div>
+            </div>
+            <div ng-repeat="t in trust" ng-show="tabActive == '4'">
+                <div class="rowBox">
+                    <div class="headerCellCustomerType">
+                        {{t.customer_type}}
+                    </div>
+                    <div class="headerAgency">
+                        {{t.ownership_agency}}
+                    </div>
+                    <div class="headerCellCustomerType">
+                        {{t.name}}
+                    </div>
+                    <div class="headerCellIDNumber">
+                        {{t.id_number}}
+                    </div>
+                    <div class="headerCellIDNumber">
+                        {{t.company_name}}
+                    </div>
+                    <div class="headerCell">
+                        {{t.untrusted_person_name}}
+                    </div>
+                    <div class="headerCell">
+                        {{t.untrusted_person_id_number}}
+                    </div>
+                    <div class="headerCell">
+                        {{t.debtor_id_number}}
+                    </div>
+                    <div class="headerCell">
+                        {{t.institution_name}}
+                    </div>
+                    <div class="headerCellDate">
+                        {{t.date_filing}}
+                    </div>
+                    <div class="headerCellIDNumber">
+                        {{t.case_number}}
+                    </div>
+                    <div class="headerCell">
+                        {{t.province}}
+                    </div>
+                    <div class="headerCellDate">
+                        {{t.release_date}}
+                    </div>
+                    <div class="headerCell">
+                        {{t.executed_person_status}}
+                    </div>
+                    <div class="headerCell">
+                        {{t.execution_person_behavior}}
+                    </div>
+                    <div class="headerCell">
+                        {{t.legal_representative}}
+                    </div>
+                    <div class="headerCell">
+                        {{t.obligation_established}}
+                    </div>
+                </div>
+            </div>
+            <div ng-repeat="s in succesion" ng-show="tabActive == '5'">
+                <div class="rowBox">
+                    <div class="headerCellCustomerType">
+                        {{s.customer_type}}
+                    </div>
+                    <div class="headerAgency">
+                        {{s.ownership_agency}}
+                    </div>
+                    <div class="headerCellCustomerType">
+                        {{s.name}}
+                    </div>
+                    <div class="headerCellIDNumber">
+                        {{s.id_number}}
+                    </div>
+                    <div class="headerCellIDNumber">
+                        {{s.company_name}}
+                    </div>
+                    <div class="headerCellIDNumber">
+                        {{s.unique_id}}
+                    </div>
+                    <div class="headerCell">
+                        {{s.debtor_name}}
+                    </div>
+                    <div class="headerCell">
+                        {{s.debtor_id_number}}
+                    </div>
+                    <div class="headerCellDate">
+                        {{s.update_time}}
+                    </div>
+                    <div class="headerCellDate">
+                        {{s.date_filing}}
+                    </div>
+                    <div class="headerCellDate">
+                        {{s.court_date}}
+                    </div>
+                    <div class="headerCell">
+                        {{s.plaintiff}}
+                    </div>
+                    <div class="headerCell">
+                        {{s.defendant}}
+                    </div>
+                    <div class="headerCell">
+                        {{s.prosecution_court}}
+                    </div>
+                    <div class="headerCellIDNumber">
+                        {{s.case_number}}
+                    </div>
+                    <div class="headerCell">
+                        {{s.case_details_link}}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="emptyData" ng-show="worksheet.length == 0 || !worksheet">
+    <!-- <div class="emptyData" ng-show="worksheet.length == 0 || !worksheet">
 
-    </div>
+    </div> -->
 </div>
