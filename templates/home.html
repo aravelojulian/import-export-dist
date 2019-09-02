@@ -23,7 +23,7 @@
         <div class="displayFlexRow">
             <input type="text" class="form-control inputFilterText" ng-model="filters.text">
             <label class="icon-Group-1607 iconSearchFilterInput"></label>
-            <label class="icon-close iconClearFilterInput" ng-click="clearFilterText()"></label>
+            <label ng-show="filters.text.length > 0" class="icon-close iconClearFilterInput" ng-click="clearFilterText()"></label>
             <button class="btn btnSaveInformation">
                 <label class="mb-0 cursor-pointer" ng-click="search()">搜索</label>
             </button>
@@ -83,7 +83,7 @@
                         查询时间
                     </div>
                 </div>
-                <div ng-repeat="q in querys | filter: filters.text | filter: filters.type">
+                <div ng-repeat="q in querys | filter: filters.text | filterBy: ['customer_type']: filters.type | orderBy: 'id_number'">
                     <div class="rowBox">
                         <div class="headerCellCustomerType">
                             {{q.customer_type}}
@@ -169,7 +169,7 @@
                         审核备注
                     </div>
                 </div>
-                <div ng-repeat="a in auctions | filter: filters.text | filter: filters.type">
+                <div ng-repeat="a in auctions | filter: filters.text  | filterBy: ['customer_type']: filters.type | orderBy: 'id_number'">
                     <div class="rowBox">
                         <div class="headerCellCustomerType">
                             {{a.customer_type}}
@@ -280,7 +280,7 @@
                     </div>
                 </div>
                 <div class="displayFlexColumn">
-                    <div ng-repeat="s in surveillance | filter: filters.text | filter: filters.type">
+                    <div ng-repeat="s in surveillance | filter: filters.text  | filterBy: ['customer_type']: filters.type | orderBy: 'id_number'">
                         <div class="rowBox">
                             <div class="headerCellCustomerType">
                                 {{s.customer_type}}
@@ -382,7 +382,7 @@
                         生效法律文书确定的义务
                     </div>
                 </div>
-                <div ng-repeat="t in trust | filter: filters.text | filter: filters.type">
+                <div ng-repeat="t in trust | filter: filters.text  | filterBy: ['customer_type']: filters.type | orderBy: 'id_number'">
                     <div class="rowBox">
                         <div class="headerCellCustomerType">
                             {{t.customer_type}}
@@ -483,7 +483,7 @@
                         案件详情链接
                     </div>
                 </div>
-                <div ng-repeat="s in succesion | filter: filters.text | filter: filters.type">
+                <div ng-repeat="s in succesion | filter: filters.text  | filterBy: ['customer_type']: filters.type | orderBy: 'id_number'">
                     <div class="rowBox">
                         <div class="headerCellCustomerType">
                             {{s.customer_type}}
