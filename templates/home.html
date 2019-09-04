@@ -61,6 +61,9 @@
                     <div class="headerCellCustomerType">
                         客户类型
                     </div>
+                    <div class="headerCellAgency">
+                        归属机构
+                    </div>
                     <div class="headerCellCustomerType">
                         姓名
                     </div>
@@ -82,11 +85,20 @@
                     <div class="headerCellDate">
                         查询时间
                     </div>
+                    <div class="headerCellDate">
+                        资产规模
+                    </div>
+                    <div class="headerCellDate">
+                        监控到期日
+                    </div>
                 </div>
-                <div ng-repeat="q in querys | filter: filters.text | filterBy: ['customer_type']: filters.type | orderBy: 'name'">
+                <div ng-repeat="q in querys | filter: filters.text | filterBy: ['customer_type']: filters.type | orderBy: 'created_date' | orderBy: 'name'">
                     <div class="rowBox">
                         <div class="headerCellCustomerType">
                             {{q.customer_type}}
+                        </div>
+                        <div class="headerCellAgency">
+                            {{q.ownership_agency}}
                         </div>
                         <div class="headerCellCustomerType">
                             {{q.name}}
@@ -108,6 +120,12 @@
                         </div>
                         <div class="headerCellDate">
                             {{q.query_time}}
+                        </div>
+                        <div class="headerCellDate">
+                            {{q.assets_size}}
+                        </div>
+                        <div class="headerCellDate">
+                            {{q.monitoring_expiration_date}}
                         </div>
                     </div>
                 </div>
@@ -169,7 +187,7 @@
                         审核备注
                     </div>
                 </div>
-                <div ng-repeat="a in auctions | filter: filters.text  | filterBy: ['customer_type']: filters.type | orderBy: 'name'">
+                <div ng-repeat="a in auctions | filter: filters.text  | filterBy: ['customer_type']: filters.type | orderBy: 'created_date'">
                     <div class="rowBox">
                         <div class="headerCellCustomerType">
                             {{a.customer_type}}
@@ -280,7 +298,7 @@
                     </div>
                 </div>
                 <div class="displayFlexColumn">
-                    <div ng-repeat="s in surveillance | filter: filters.text  | filterBy: ['customer_type']: filters.type | orderBy: 'name'">
+                    <div ng-repeat="s in surveillance | filter: filters.text  | filterBy: ['customer_type']: filters.type | orderBy: 'created_date'">
                         <div class="rowBox">
                             <div class="headerCellCustomerType">
                                 {{s.customer_type}}
@@ -382,7 +400,7 @@
                         生效法律文书确定的义务
                     </div>
                 </div>
-                <div ng-repeat="t in trust | filter: filters.text  | filterBy: ['customer_type']: filters.type | orderBy: 'name'">
+                <div ng-repeat="t in trust | filter: filters.text  | filterBy: ['customer_type']: filters.type | orderBy: 'created_date'">
                     <div class="rowBox">
                         <div class="headerCellCustomerType">
                             {{t.customer_type}}
@@ -483,7 +501,7 @@
                         案件详情链接
                     </div>
                 </div>
-                <div ng-repeat="s in succesion | filter: filters.text  | filterBy: ['customer_type']: filters.type | orderBy: 'name'">
+                <div ng-repeat="s in succesion | filter: filters.text  | filterBy: ['customer_type']: filters.type | orderBy: 'created_date'">
                     <div class="rowBox">
                         <div class="headerCellCustomerType">
                             {{s.customer_type}}
